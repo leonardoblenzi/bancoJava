@@ -18,7 +18,15 @@ public class Conta {
 	}
 	//operacao de saque
 	public void Saque(Double quantia) {
-		this.Saldo -= quantia;
+		if(Saldo >= quantia) {
+			this.Saldo -= quantia;
+			System.out.println("*********SAQUE EFETUADO***********");
+		}
+		else {
+			System.out.println("*********SALDO INDÍSPONIVEL*******");
+			
+		}
+		
 	}
 	//operacao de deposito
 	public void Deposito(Double quantia) {

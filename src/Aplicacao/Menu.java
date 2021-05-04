@@ -33,7 +33,7 @@ public class Menu {
 	
 	//opcao conta normal
 	public void contaFisica() {
-		System.out.println("----------CONTA PESSOA FÍSICA--------");
+		System.out.println("----------CONTA PESSOA FÍSICA------------------");
 		System.out.println("----------Digite seus dados de cadastro--------");
 		System.out.print("\nNUMERO DA CONTA: ");
 		Integer numero = sc.nextInt();
@@ -55,16 +55,8 @@ public class Menu {
 		if(n== 1) {
 			System.out.print("Informe um valor para saque: ");
 			Double valor = sc.nextDouble();
-			if(conta.getSaldo() >= valor) {
-				conta.Saque(valor);
-				//volta para menu de conta fisica
-				contaFisica();
-			}
-			else {
-				System.out.print("*********SALDO INDÍSPONIVEL*******");
-				contaFisica();
-			}
-			
+			conta.Saque(valor);
+			contaFisica();
 		}
 		//deposito
 		else if(n==2) {
@@ -77,8 +69,9 @@ public class Menu {
 		else if(n == 0) {
 			menuStart();
 		}
-	}
+	}//fim metodo contaFisica();
 	
+	//metodo conta empresa
 	public void contaEmpresa() {
 		
 	}
