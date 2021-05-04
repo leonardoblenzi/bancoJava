@@ -5,7 +5,9 @@ public class Conta {
 	private String Titular;
 	private Double Saldo;
 	
-	
+	public Conta() {
+		
+	}
 	
 	
 	public Conta(Integer numero, String titular, Double saldo) {
@@ -15,11 +17,11 @@ public class Conta {
 		Saldo = saldo;
 	}
 	//operacao de saque
-	private void Saque(Double quantia) {
+	public void Saque(Double quantia) {
 		this.Saldo -= quantia;
 	}
 	//operacao de deposito
-	private void Deposito(Double quantia) {
+	public void Deposito(Double quantia) {
 		this.Saldo += quantia;
 	}
 
