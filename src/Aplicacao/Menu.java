@@ -44,7 +44,33 @@ public class Menu {
 		Double saldo = sc.nextDouble();
 		
 		Conta conta = new Conta(numero, nome, saldo);
+		//chama as operacoes e passa a conta como parametro
+		operacoesFisica(conta);
 		
+	}//fim metodo contaFisica();
+	
+	//metodo conta empresa
+	public void contaEmpresa() {
+		System.out.println("----------CONTA EMPRESARIAL--------------------");
+		System.out.println("----------Digite seus dados de cadastro--------");
+		System.out.print("\nNUMERO DA CONTA: ");
+		Integer numero = sc.nextInt();
+		System.out.print("\nNOME TITULAR: ");
+		String nome = sc.nextLine();
+		sc.nextLine();//limpar buffer de entrada
+		System.out.print("\nSALDO: ");
+		Double saldo = sc.nextDouble();
+		System.out.print("\nLIMITE: ");
+		Double limite= sc.nextDouble();
+		
+		contaEmpresa contaEmp = new contaEmpresa(numero, nome, saldo, limite);
+		
+		operacoesEmp(contaEmp);
+	
+	}
+	//recebe o objeto conta
+	//operacoes para conta de pessoas fisicas
+	public void operacoesFisica(Conta conta) {
 		System.out.println("**************OPERAÇÕES************");
 		System.out.println("SAQUE: 1");
 		System.out.println("DEPOSITO: 2");
@@ -56,24 +82,87 @@ public class Menu {
 			System.out.print("Informe um valor para saque: ");
 			Double valor = sc.nextDouble();
 			conta.Saque(valor);
-			contaFisica();
+			verificaFisica(conta);
+			
 		}
 		//deposito
 		else if(n==2) {
 			System.out.print("Informe um valor para deposito: ");
 			Double valor = sc.nextDouble();
 			conta.Deposito(valor);
-			contaFisica();
+			verificaFisica(conta);
 		}
 		//voltar
 		else if(n == 0) {
 			menuStart();
 		}
-	}//fim metodo contaFisica();
+	}
 	
-	//metodo conta empresa
-	public void contaEmpresa() {
+	//operacoes para conta empresarial
+	public void operacoesEmp(contaEmpresa contaEmp) {
+		System.out.println("**************OPERAÇÕES************");
+		System.out.println("SAQUE: 1");
+		System.out.println("DEPOSITO: 2");
+		System.out.println("EMPRESTIMO: 3");
+		System.out.println("VOLTAR: 0");
+		System.out.print("Informe a operação desejada: ");
+		int n = sc.nextInt();
+		//saque
+		if(n== 1) {
+			System.out.print("Informe um valor para saque: ");
+			Double valor = sc.nextDouble();
+			contaEmp.Saque(valor);
+			verificaEmp(contaEmp);
+		}
+		//deposito
+		else if(n==2) {
+			System.out.print("Informe um valor para deposito: ");
+			Double valor = sc.nextDouble();
+			contaEmp.Deposito(valor);
+			verificaEmp(contaEmp);
+		}
+		else if(n==3) {
+			System.out.print("Informe um valor para emprestimo: ");
+			Double valor = sc.nextDouble();
+			contaEmp.Emprestimo(valor);
+			verificaEmp(contaEmp);
+		}
+		//voltar
+		else if(n == 0) {
+			menuStart();
+	}
 		
 	}
+	//verifica se o usuario quer fazer nova op ou voltar ao menu inicial
+	public void verificaFisica(Conta conta) {
+		System.out.println("Deseja fazer uma nova operacão?\n SIM:1 \n NÃO:0");
+		int op = sc.nextInt();
+		if(op == 1) {
+			operacoesFisica(conta);
+		}
+		else if(op ==0) {
+			menuStart();
+		}
+		else {
+			System.out.println("OPÇÃO INVALIDA");
+			verificaFisica(conta);
+		}
+	}
+	
+	public void verificaEmp(contaEmpresa contaEmp) {
+		System.out.println("Deseja fazer uma nova operacão?\n SIM:1 \n NÃO:0");
+		int op = sc.nextInt();
+		if(op == 1) {
+			operacoesEmp(contaEmp);
+		}
+		else if(op ==0) {
+			menuStart();
+		}
+		else {
+			System.out.println("OPÇÃO INVALIDA");
+			verificaEmp(contaEmp);
+		}
+	}
+	
 	
 }

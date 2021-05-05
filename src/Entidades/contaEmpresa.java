@@ -14,9 +14,13 @@ public class contaEmpresa extends Conta {
 	}
 	/*se o limite do cliente for maior ou igual a quantidade que ele quer emprestar
 	 vai chamar o metodo de deposito para receber o valor na conta*/
-	private void Emprestimo(Double quantidade) {
+	public void Emprestimo(Double quantidade) {
 		if(Limite >= quantidade) {
 			Deposito(quantidade);
+			System.out.println("EMPRESTIMO EFETUADO");
+		}
+		else {
+			System.out.println("LIMITE INSUFICIENTE");
 		}
 	}
 
@@ -27,6 +31,8 @@ public class contaEmpresa extends Conta {
 	public void setLimite(Double limiteEmprestimo) {
 		Limite = limiteEmprestimo;
 	}
+	
+	
 
 	
 	
