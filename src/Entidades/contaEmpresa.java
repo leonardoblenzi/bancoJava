@@ -3,6 +3,7 @@ package Entidades;
 
 public class contaEmpresa extends Conta {
 	//saque pra conta tipo empresa tem taxa
+	//constante
 	final Double TAXA_SAQUE = 5.00;
 	
 	private Double Limite;
@@ -38,17 +39,16 @@ public class contaEmpresa extends Conta {
 	
 	
 	//saque em conta empresarial tem taxa de 5 reais, conta normal(fisica) não tem taxa
+	//sobrepondo o metodo de saque herdado
+	//usando super. e chamando o metodo da superclasse só que descontando 5 ao final
+	@Override
 	public void Saque(Double quantia) {
-		if(Saldo >= quantia) {
-			this.Saldo -= quantia + TAXA_SAQUE;
-			System.out.println("*********SAQUE EFETUADO***********");
-		}
-		else {
-			System.out.println("*********SALDO INDÍSPONIVEL*******");
-			
-		}
+		super.Saque(quantia);
+		Saldo -= TAXA_SAQUE;
 		
 	}
+	
+	
 	}
 	
 	
