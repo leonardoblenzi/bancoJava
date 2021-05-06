@@ -74,6 +74,7 @@ public class Menu {
 		System.out.println("**************OPERAÇÕES************");
 		System.out.println("SAQUE: 1");
 		System.out.println("DEPOSITO: 2");
+		System.out.println("SALDO: 3");
 		System.out.println("VOLTAR: 0");
 		System.out.print("Informe a operação desejada: ");
 		int n = sc.nextInt();
@@ -92,6 +93,10 @@ public class Menu {
 			conta.Deposito(valor);
 			verificaFisica(conta);
 		}
+		else if(n==3) {
+			System.out.print("SALDO DISPONIVEL: " + conta.getSaldo() + "\n");
+			verificaFisica(conta);
+		}
 		//voltar
 		else if(n == 0) {
 			menuStart();
@@ -102,8 +107,9 @@ public class Menu {
 	public void operacoesEmp(contaEmpresa contaEmp) {
 		System.out.println("**************OPERAÇÕES************");
 		System.out.println("SAQUE: 1");
-		System.out.println("DEPOSITO: 2");
-		System.out.println("EMPRESTIMO: 3");
+		System.out.println("DEPOSITO: 2");	
+		System.out.println("SALDO: 3");
+		System.out.println("EMPRESTIMO: 4");
 		System.out.println("VOLTAR: 0");
 		System.out.print("Informe a operação desejada: ");
 		int n = sc.nextInt();
@@ -121,7 +127,13 @@ public class Menu {
 			contaEmp.Deposito(valor);
 			verificaEmp(contaEmp);
 		}
+		//saldo
 		else if(n==3) {
+			System.out.print("SALDO DISPONIVEL: " + contaEmp.getSaldo() + "\n");
+			verificaEmp(contaEmp);
+		}
+		//emprestimo
+		else if(n==4) {
 			System.out.print("Informe um valor para emprestimo: ");
 			Double valor = sc.nextDouble();
 			contaEmp.Emprestimo(valor);

@@ -3,7 +3,7 @@ package Entidades;
 public class Conta {
 	private Integer Numero;
 	private String Titular;
-	private Double Saldo;
+	protected Double Saldo;
 	
 	public Conta() {
 		

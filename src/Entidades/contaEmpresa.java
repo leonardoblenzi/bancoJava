@@ -1,6 +1,10 @@
 package Entidades;
-//especificarr somente o que tem à mais em relação à conta Pai
+//especificar somente o que tem à mais em relação à conta Pai
+
 public class contaEmpresa extends Conta {
+	//saque pra conta tipo empresa tem taxa
+	final Double TAXA_SAQUE = 5.00;
+	
 	private Double Limite;
 	
 	public contaEmpresa() {
@@ -33,12 +37,27 @@ public class contaEmpresa extends Conta {
 	}
 	
 	
-
+	//saque em conta empresarial tem taxa de 5 reais, conta normal(fisica) não tem taxa
+	public void Saque(Double quantia) {
+		if(Saldo >= quantia) {
+			this.Saldo -= quantia + TAXA_SAQUE;
+			System.out.println("*********SAQUE EFETUADO***********");
+		}
+		else {
+			System.out.println("*********SALDO INDÍSPONIVEL*******");
+			
+		}
+		
+	}
+	}
 	
 	
 
 	
 	
+
 	
 	
-}
+	
+	
+
